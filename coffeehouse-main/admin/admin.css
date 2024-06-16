@@ -1,0 +1,339 @@
+/* NAVBAR */
+.pannel-admin {
+    padding-left: 50px;
+}
+.nav-user {
+    padding-right: 50px;
+}
+.mx-auto {
+    padding-left: 12vh;
+}
+.bg-nav{
+    background-color: #394034;
+}
+#profile-icon {
+    color: white;
+}
+#profile-icon:hover {
+    color:#D78325;
+}
+.nav-link.active:hover{
+    color: #D78325 !important;
+}
+
+
+
+/* ------------LOGOUT ---------------*/
+.user-box {
+    background-color: #fff;
+    box-shadow: 0px 0px 10px  rgba(0, 0, 0, 0.6);
+    position: absolute;
+    top: 10%;
+    left: 75%;
+    width: 18rem;
+    padding: .7rem 1rem;
+    border-radius: 5px;
+    text-transform: capitalize;
+    color: #555;
+    font-size: 12px;
+    display: none;
+    transition: .5s;
+}
+.user-box.active {
+    display: block;
+}
+.user-box span {
+    text-transform: capitalize;
+    color: #aa4ff3;
+    font-size: 14px;
+}
+.logout-btn {
+    background-color: #D78325;
+    width: 16rem;
+    height: 40px;
+    padding: 0;
+    cursor: pointer;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    margin-top: 1rem;
+}
+
+.logout-btn:hover{
+    background-color: #394034;
+}
+
+/*------------- dashboard ---------------*/
+.dashboard-container .box-container .box{
+    background-color:#fff;
+}
+
+.dashboard-container{
+    
+    min-height: 100vh;
+}
+h2{
+    padding-top: 5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+.box-container{
+    padding: 1% 8%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(18rem,1fr));
+    justify-content: center;
+    align-items: center;
+    
+}
+.box-container .box{
+    box-shadow:0px 0px 10px  rgba(0, 0, 0, 0.3);
+    border: 2px;
+    margin: 1rem;
+    text-align: center;
+    border-radius: 5px;
+}
+/* -----------btn add product------------  */
+.floating-btn {
+background-color: #D78325;
+position: fixed;
+bottom: 30px;
+right: 30px;
+background-color: #D78325;
+color: white;
+border: none;
+border-radius: 50%;
+width: 40px;
+height: 40px;
+display: flex;
+justify-content: center;
+align-items: center;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+cursor: pointer;
+}
+
+.floating-btn:hover {
+    background-color: #394034;
+}
+
+.floating-btn i {
+    font-size: 24px;
+}
+/* ----------------- add product -------------------- */
+
+/*  */
+section form h1.title {
+    text-align: center;
+    position: relative;
+    color: black;
+    top: -1rem;
+}
+
+.add-products form{
+    border-radius: 5px;
+    border: none;
+    padding: 1rem 1rem;
+    position: relative;
+    top: -3rem;
+ }
+ input{
+    width: 100%;
+ }
+ .add-products form label{
+     text-transform: capitalize;
+ }
+ .add-products form textarea{
+     height: 200px;
+     width: 100%;
+ }
+
+ .btn-add-product{
+    background-color: #D78325;
+    border: none;
+    height: 2rem;
+    margin-top: 1rem;
+    border-radius: 5px;
+    color: white;
+ }
+
+ .btn-add-product:hover{
+    background-color: #394034;
+ }
+ /* ---------- show produc--------- */
+
+
+  .show-products .box-container {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  margin-top: 2rem;
+}
+
+.show-products .box-container .box {
+  background-color: #fff;
+  padding: 2rem;
+  flex: 0 0 auto;
+  margin-right: 2rem;
+}
+
+.show-products .box-container .box .image {
+  background-color: #fff;
+}
+
+.delete {
+  margin-top: 2rem;
+  text-transform: capitalize;
+  color: #fff;
+  background-color: #D78325;
+  border-radius: 5px;
+  
+  text-decoration: none;
+}
+
+.edit {
+  text-decoration: none;
+  text-transform: capitalize;
+  color: #fff;
+  background-color: #D78325;
+  border-radius: 5px;
+  padding: 1rex 2rem 1rex 2rem;
+  margin: 1rex;
+  
+  
+}
+
+.edit:hover, .delete:hover {
+  background-color: #394034;
+}
+
+.show-products .box .detail {
+  font-size: 14px;
+}
+
+.show-products .box img {
+  width: 100%;
+  height: auto;
+  max-width: 35rem;
+}
+
+.update-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+  z-index: 1100;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.update-container form {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6);
+  width: 50%;
+  color: black;
+  padding: 1rem 2rem;
+  margin: 2rem auto;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+.update-container form textarea {
+  width: 100%;
+  height: 25vh;
+}
+
+.update-container .edit {
+  width: 40%;
+  cursor: pointer;
+  border: none;
+  margin-top: 1rem;
+}
+
+.update-container form img {
+  width: 70%;
+  height: 70%;
+  padding: 1rem;
+}
+
+
+
+ /* -----------------USER----------- */
+  .user-container .box-container .box{
+    background-color: #fff;
+  }
+ div h1.title{
+    text-align: center;
+    padding-top: 4rem;
+ }
+ div div.box{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+ }
+
+
+
+/* ------------order---------------- */
+
+.order-container .box-container .box{
+    background-color: #fff;
+}
+section .title{
+    text-align: center;
+    margin-top: 2rem;
+    color: black;
+}
+.order-container{
+    padding: 3% 7%;
+}
+.order-container .box-container{
+    grid-template-columns: repeat(auto-fit, minmax(20rem,1fr));
+    justify-content: center;
+    align-items: center;
+}
+.order-container .box{
+    text-align: center;
+    padding: auto;
+}
+
+.order-container form{
+    text-align: center;
+}
+
+
+.order-container form input{
+    box-shadow: none;
+    border: none;
+    width: 40%;
+    padding:5px ;
+    border-radius: 5px;
+    text-transform: capitalize;
+    background-color: #D78325;
+    color: white;
+    margin: 1rem 1rex;
+    
+}
+
+.order-container form input:hover{
+    background-color: #394034;
+}
+
+.box-container .delete{
+    padding: 1rex 10%;
+}
+
+ /* --------messages------ */
+ div h1.title{
+    text-align: center;
+    padding-top: 4rem;
+    color: black;
+ }
+
+
+.messages-container .box-container .box {
+    background-color: #fff; /* Memastikan box tetap berwarna putih */
+}
