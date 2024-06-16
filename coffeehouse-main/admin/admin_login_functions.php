@@ -3,8 +3,7 @@
 require_once "../koneksi/conn.php";
 require_once "../loginTrait/loginTrait.php";
 
-// Class Login untuk users
-class LoginUser extends Conn implements LoginInterface {
+class LoginAdmin extends Conn implements LoginInterface {
     use TableAccessTrait;
 
     public function getLogin($data) {
@@ -19,8 +18,8 @@ class LoginUser extends Conn implements LoginInterface {
         if ($sql) {
             $row = $sql->fetch(PDO::FETCH_ASSOC);
             if ($row) {
-                if (password_verify($password, $row["password"])) {
-                    $_SESSION['login'] = $_POST['username'];
+                if ($password === $row["password"]) {
+                    $_SESSION['admin'] = $_POST['username'];
                     return true;
                 } else {
                     return false;
@@ -33,6 +32,7 @@ class LoginUser extends Conn implements LoginInterface {
         }
     }
 }
+
 
 
 
