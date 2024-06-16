@@ -1,8 +1,14 @@
 <?php 
-
+session_start();
 require_once "adminFunctions.php";
 $admins = new Admin();
 $admin = $admins->getAdmin();
+
+if(!isset($_SESSION['admin']))
+{
+  header("Location: admin_login.php");
+  exit;
+}
 
 ?>
 <!DOCTYPE html>
@@ -52,6 +58,8 @@ $admin = $admins->getAdmin();
       </div>
     </div>
   </nav>
+
+  
 
   <!-- logout -->
     <div class="user-box" id="user-box">
