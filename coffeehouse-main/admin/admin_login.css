@@ -1,6 +1,6 @@
 .container {
     background-image: url('coffee2.png');
-    background-size: 70% auto; /* Atur lebar gambar latar belakang menjadi 200px dan biarkan tingginya mengikuti proporsi asli */
+    background-size: 70% auto;
     background-repeat: no-repeat;
     background-position: center;
     padding: 200px;
@@ -18,8 +18,8 @@
     font-weight: bold;
   }
   .btn-login {
-      background-color: #ff6600; /* Ganti dengan warna yang diinginkan */
-      color: #ffffff; /* Opsional: Ganti dengan warna teks yang sesuai */
+      background-color: #ff6600;
+      color: #ffffff;
   }
   
   .btn-login:hover {
