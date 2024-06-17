@@ -1,6 +1,6 @@
 <?php 
 session_start();
-require_once "function.php";
+require_once "../profil/function.php";
 require_once "../products/product.php";
 
 if(isset($_SESSION['login']))
@@ -95,7 +95,7 @@ $product1 = $products->getProduct("SELECT * FROM products")[0];
         <!-- Menu -->
         <div class="container-fluid pt-5 menu" id="menu">
             <div class="container text-center " >
-            <h2 class="mt-3" >Menu</h2>
+            <h2 class="mt-3" >Produk</h2>
             <div class="row pt-4 gx-4 gy-4"> 
             <?php foreach($product as $row): ?>
     <!-- CARD 1 -->
@@ -146,17 +146,17 @@ $product1 = $products->getProduct("SELECT * FROM products")[0];
                     </div>
                 </div>
                 <!-- Footer Modal -->
-                <div class="modal-footer">
+                <div class="modal-footer text-center">
                     <?php if(isset($_SESSION['login'])): ?>
                         <?php
                             $productId = $row['product_id'];
                             $checkoutUrl = '../checkout/checkout.php?product_id=' . $productId . '&quantity=1'; // Default quantity di sini adalah 1
                         ?>
-                        <a href="<?php echo $checkoutUrl; ?>" class="btn-popup" id="checkoutLink_<?php echo $row['product_id']; ?>" data-product-id="<?php echo $productId; ?>">Beli Langsung</a>
+                        <a href="<?php echo $checkoutUrl; ?>" class="btn-popup text-center text-decoration-none" id="checkoutLink_<?php echo $row['product_id']; ?>" data-product-id="<?php echo $productId; ?>">Beli Langsung</a>
                         <button type="button" class="btn-popup btn-add-to-cart" data-product-id="<?php echo $productId; ?>">Tambahkan Ke Keranjang</button>
                     <?php else: ?>
-                        <a href="../create_account/create_account.php" style="text-decoration: none;"><p class="text-center">Create Account</p></a>
-                        <a href="../login/login.php" style="text-decoration: none;"><p class="text-center">Masuk</p></a>
+                        <a href="../login/login.php" class="btn text-center text-decoration-none" id="btn-login">Masuk</a>
+                        <a href="../create_account/create_account.php" class="btn text-center text-decoration-none" id="btn-create-account">Buat Akun</a>
                     <?php endif; ?>
                 </div>
             </div>

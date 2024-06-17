@@ -1,6 +1,6 @@
 <?php 
 session_start();
-require_once "function.php";
+require_once "../profil/function.php";
 require_once "../products/product.php";
 
 if(isset($_SESSION['login']))

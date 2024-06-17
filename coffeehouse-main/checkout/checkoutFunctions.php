@@ -54,9 +54,12 @@ class Checkout extends Conn
         $price = $products[0]['product_price'];
         $total = $quantity * $price;
 
+        $conn->beginTransaction();
         try {
-            // Memulai transaksi
-            $conn->beginTransaction();
+            // Generate transaction_id
+            $prefix = 'TRX';
+            $transaction_id = $prefix . '_' . time(); // Misalnya, menggunakan UNIX timestamp
+            
 
             // Persiapkan dan eksekusi query INSERT ke transactions
             $query = $conn->prepare("INSERT INTO transactions (transaction_id, user_id, username, product_id, product_name, quantity, price, total, created_at, status)
@@ -64,7 +67,6 @@ class Checkout extends Conn
             $query->execute([$user_id, $username, $product_id, $product_name, $quantity, $price, $total]);
 
             // Ambil transaction_id yang baru saja di-generate
-            $transaction_id = $conn->lastInsertId();
 
             // Persiapkan dan eksekusi query INSERT ke transactions_detail
             $query_detail = $conn->prepare("INSERT INTO transactions_detail (transaction_id, product_id, product_name, quantity, price, subtotal)

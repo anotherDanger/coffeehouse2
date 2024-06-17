@@ -94,15 +94,58 @@ h4{
   width: 200px;
 }
 .btn-popup{
-    width: 45%;
-    height: 45px;
-    border: none;
-    background-color: #D78325;
-    margin-bottom: 10px;
-    border-radius: 10px;
-    margin-left: 15px;
-    
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px; /* Sesuaikan lebar tombol sesuai kebutuhan */
+  height: 45px; /* Sesuaikan tinggi tombol sesuai kebutuhan */
+  background-color: #D78325; /* Warna latar belakang */
+  color: #fff; /* Warna teks */
+  text-decoration: none; /* Hilangkan garis bawah */
+  border: none; /* Hilangkan border */
+  border-radius: 10px; /* Sudut border-radius */
+  margin-bottom: 10px; /* Margin bawah */
+  text-align: center; /* Pusatkan teks secara horizontal */
+  transition: background-color 0.3s ease; /* Efek transisi saat hover */
 }
+
+#btn-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px; /* Sesuaikan lebar tombol sesuai kebutuhan */
+  height: 45px; /* Sesuaikan tinggi tombol sesuai kebutuhan */
+  background-color: #D78325; /* Warna latar belakang */
+  color: #fff; /* Warna teks */
+  text-decoration: none; /* Hilangkan garis bawah */
+  border: none; /* Hilangkan border */
+  border-radius: 10px; /* Sudut border-radius */
+  margin-bottom: 10px; /* Margin bawah */
+  text-align: center; /* Pusatkan teks secara horizontal */
+  transition: background-color 0.3s ease; /* Efek transisi saat hover */
+}
+
+
+#btn-create-account {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px; /* Sesuaikan lebar tombol sesuai kebutuhan */
+  height: 45px; /* Sesuaikan tinggi tombol sesuai kebutuhan */
+  background-color: #d72525; /* Warna latar belakang */
+  color: #fff; /* Warna teks */
+  border: none; /* Hilangkan border */
+  border-radius: 10px; /* Sudut border-radius */
+  margin-bottom: 10px; /* Margin bawah */
+  text-align: center; /* Pusatkan teks secara horizontal */
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: center;
+  margin-left: -14px; /* Adjust this value as needed */
+}
+
 .quantity {
     position: relative;
     display: flex;
