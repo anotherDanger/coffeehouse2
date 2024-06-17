@@ -33,6 +33,9 @@
           <li class="nav-item">
             <a class="nav-link active text-white" aria-current="page" href="admin_messages.php">Messages</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link active text-white" aria-current="page" href="admin_logout.php">Logout</a>
+          </li>
         </ul>
         <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
           <li class="nav-item nav-user">

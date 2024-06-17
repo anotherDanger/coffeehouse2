@@ -1,14 +1,14 @@
 .background-image {
   background-image: url('img/pngwing.com.png');
-    background-size: contain; /* Mengatur gambar agar selalu menutupi seluruh area */
+    background-size: contain; 
     background-repeat: no-repeat;
     background-position: center;
-    position: absolute; /* Menjadikan posisi absolut untuk overlay */
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1; /* Dorong ke belakang agar tidak menutupi konten */
+    z-index: -1;
 }
 
 
@@ -20,7 +20,7 @@
   padding: 100px 20px;
   max-width: 600px;
   margin: 0 auto;
-  position: relative; /* Menambahkan posisi relatif untuk konten */
+  position: relative;
 }
 
 @media (max-width: 767.98px) {

@@ -1,9 +1,15 @@
 <?php 
-
+session_start();
 require_once "../products/product.php";
 $products = new Product();
 $product = $products->getProduct("SELECT * FROM products");
 $product1 = $products->getProduct("SELECT * FROM products")[0];
+
+if(!isset($_SESSION['admin']))
+{
+  header("Location: admin_login.php");
+  exit;
+}
 
 ?>
 
@@ -28,19 +34,22 @@ $product1 = $products->getProduct("SELECT * FROM products")[0];
       <div class="collapse navbar-collapse " id="navbarSupportedContent">
         <ul class="navbar-nav mb-2 mb-lg-0 mx-auto ">
           <li class="nav-item">
-            <a class="nav-link active text-white" aria-current="page" href="admin_home.html">Home</a>
+            <a class="nav-link active text-white" aria-current="page" href="admin_home.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active text-white" aria-current="page" href="admin_product.html">Products</a>
+            <a class="nav-link active text-white" aria-current="page" href="admin_product.php">Products</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active text-white" aria-current="page" href="admin_orders.html">Orders</a>
+            <a class="nav-link active text-white" aria-current="page" href="admin_orders.php">Orders</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active text-white" aria-current="page" href="admin_users.html">Users</a>
+            <a class="nav-link active text-white" aria-current="page" href="admin_users.php">Users</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active text-white" aria-current="page" href="admin_messages.html">Messages</a>
+            <a class="nav-link active text-white" aria-current="page" href="admin_messages.php">Messages</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active text-white" aria-current="page" href="admin_logout.php">Logout</a>
           </li>
         </ul>
         <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
@@ -76,25 +85,33 @@ $product1 = $products->getProduct("SELECT * FROM products")[0];
     <div class="modal-content">
       <div class="modal-body">
         <section class="add-products">
-          <form action="" method="post" enctype="multipart/form-data">
+          <form id = "add" action="adminProductFunction.php" method="post" enctype="multipart/form-data">
               <h1 class="title">Add New Product</h1>
               <div class="input-field">
-                  <label for="">Nama biji kopi</label>
-                  <input type="text" name="name" required>
+                  <label for="product_id">ID biji kopi</label>
+                  <input type="text" name="product_id" required>
               </div>
               <div class="input-field">
-                  <label for="">Harga biji kopi</label>
-                  <input type="text"name="price" required>
+                  <label for="product_name">Nama biji kopi</label>
+                  <input type="text" name="product_name" required>
               </div>
               <div class="input-field">
-                  <label for="">Deskripsi</label>
-                  <textarea name="detail" id="" required></textarea>
+                  <label for="product_price">Harga biji kopi</label>
+                  <input type="text" name="product_price" required>
               </div>
               <div class="input-field">
-                  <label for="">Foto biji kopi</label>
-                  <input type="file" name="image" accept="image/jpg, image/png, image/jpeg, image/webp" required>
+                  <label for="product_stock">Stok biji kopi</label>
+                  <input type="text" name="product_stock" required>
               </div>
-                  <input type="submit" name="add_product" value="Simpan" class="btn-add-product">
+              <div class="input-field">
+                  <label for="product_desc">Deskripsi</label>
+                  <textarea name="product_desc" required></textarea>
+              </div>
+              <div class="input-field">
+                  <label for="image">Foto biji kopi</label>
+                  <input type="file" name="image">
+              </div>
+              <input id = "add" type="submit" name="add_product" value="Simpan" class="btn-add-product">
           </form>
       </section>
       </div>
@@ -110,10 +127,9 @@ $product1 = $products->getProduct("SELECT * FROM products")[0];
           
         <?php foreach($product as $row): ?>
                 <div class="box">
-                  <img class="image" src="img-admin/back1.jpg" alt="image kopi">
+                <img src="../img-coffee/<?php echo $row['product_image'] ?>" alt="<?php echo $row['product_image']; ?>">
                   <h4><?php echo $row['product_name']; ?></h4>
                   <p><?php echo $row['product_price']; ?></p>
-                  
                   <a href="admin_product.php" class="edit" data-bs-toggle="modal" data-bs-target="#edit-product" >Edit</a>
                   <a href="admin_product.php" class="delete" onclick="return confirm('delete this')">Delete</a>
                 </div>

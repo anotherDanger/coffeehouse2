@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // Event listener untuk perubahan langsung pada input quantity
+
     document.querySelectorAll('.quantity-input').forEach(function(input) {
         input.addEventListener('change', function() {
             var productId = this.id.replace('quantity_', '');
@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    // Event listener untuk tombol tambah produk
+
     document.querySelectorAll('.plus-btn').forEach(function(btn) {
         btn.addEventListener('click', function() {
             var productId = this.getAttribute('data-product-id');
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    // Event listener untuk tombol kurang produk
+
     document.querySelectorAll('.minus-btn').forEach(function(btn) {
         btn.addEventListener('click', function() {
             var productId = this.getAttribute('data-product-id');
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    // Fungsi untuk memperbarui link "Beli Langsung"
+
     function updateCheckoutLink(productId, quantity) {
         var checkoutLink = document.getElementById('checkoutLink_' + productId);
         checkoutLink.href = '../checkout/checkout.php?product_id=' + productId + '&quantity=' + encodeURIComponent(quantity);

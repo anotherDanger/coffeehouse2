@@ -101,7 +101,7 @@ $product1 = $products->getProduct("SELECT * FROM products")[0];
     <!-- CARD 1 -->
     <div class="col-md-4">
         <div class="card crop-img">
-            <img src="../img-coffee/ARABIkA.png" class="card-image card-img-top" />
+            <img src="../img-coffee/<?php echo $row['product_image']; ?>" class="card-image card-img-top" />
             <h5 class="card-title"><?php echo $row['product_name']; ?></h5>
             <p class="card-text">Rp. <?php echo $row['product_price']; ?></p>
             <button class="btn btn-view-product mb-3" type="button" data-bs-toggle="modal" data-bs-target="#btnModal<?php echo $row['product_id']; ?>">Lihat Produk</button>
