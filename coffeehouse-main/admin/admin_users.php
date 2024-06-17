@@ -1,9 +1,15 @@
 <?php 
-
+session_start();
 require_once "adminFunctions.php";
 
 $users = new Admin();
 $user = $users->getUser("SELECT * FROM users");
+
+if(!isset($_SESSION['admin']))
+{
+  header("Location: admin_login.php");
+  exit;
+}
 
 ?>
 
@@ -28,19 +34,22 @@ $user = $users->getUser("SELECT * FROM users");
       <div class="collapse navbar-collapse " id="navbarSupportedContent">
         <ul class="navbar-nav mb-2 mb-lg-0 mx-auto ">
           <li class="nav-item">
-            <a class="nav-link active text-white" aria-current="page" href="admin_home.html">Home</a>
+            <a class="nav-link active text-white" aria-current="page" href="admin_home.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active text-white" aria-current="page" href="admin_product.html">Products</a>
+            <a class="nav-link active text-white" aria-current="page" href="admin_product.php">Products</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active text-white" aria-current="page" href="admin_orders.html">Orders</a>
+            <a class="nav-link active text-white" aria-current="page" href="admin_orders.php">Orders</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active text-white" aria-current="page" href="admin_users.html">Users</a>
+            <a class="nav-link active text-white" aria-current="page" href="admin_users.php">Users</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active text-white" aria-current="page" href="admin_messages.html">Messages</a>
+            <a class="nav-link active text-white" aria-current="page" href="admin_messages.php">Messages</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active text-white" aria-current="page" href="admin_logout.php">Logout</a>
           </li>
         </ul>
         <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">

@@ -6,19 +6,19 @@ $quantity = $_GET['quantity'];
 $checkout = new Checkout();
 
 if(isset($_POST['checkout'])) {
-    // Buat objek Checkout
+   
     $checkout = new Checkout();
 
-    // Panggil metode checkout dengan data dari $_POST
+
     $result = $checkout->checkout($_POST);
 
     
     if($result > 0) {
         echo "Pesanan berhasil dibuat!";
-        // Redirect atau tampilkan pesan sukses, sesuai kebutuhan
+
     } else {
         echo "Gagal membuat pesanan. Silakan coba lagi.";
-        // Tampilkan pesan gagal, sesuai kebutuhan
+
     }
 }
 

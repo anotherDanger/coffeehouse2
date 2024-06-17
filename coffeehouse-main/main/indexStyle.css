@@ -97,32 +97,32 @@ h4{
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 200px; /* Sesuaikan lebar tombol sesuai kebutuhan */
-  height: 45px; /* Sesuaikan tinggi tombol sesuai kebutuhan */
-  background-color: #D78325; /* Warna latar belakang */
-  color: #fff; /* Warna teks */
-  text-decoration: none; /* Hilangkan garis bawah */
-  border: none; /* Hilangkan border */
-  border-radius: 10px; /* Sudut border-radius */
-  margin-bottom: 10px; /* Margin bawah */
-  text-align: center; /* Pusatkan teks secara horizontal */
-  transition: background-color 0.3s ease; /* Efek transisi saat hover */
+  width: 200px;
+  height: 45px;
+  background-color: #D78325;
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  transition: background-color 0.3s ease;
 }
 
 #btn-login {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 200px; /* Sesuaikan lebar tombol sesuai kebutuhan */
-  height: 45px; /* Sesuaikan tinggi tombol sesuai kebutuhan */
-  background-color: #D78325; /* Warna latar belakang */
-  color: #fff; /* Warna teks */
-  text-decoration: none; /* Hilangkan garis bawah */
-  border: none; /* Hilangkan border */
-  border-radius: 10px; /* Sudut border-radius */
-  margin-bottom: 10px; /* Margin bawah */
-  text-align: center; /* Pusatkan teks secara horizontal */
-  transition: background-color 0.3s ease; /* Efek transisi saat hover */
+  width: 200px;
+  height: 45px;
+  background-color: #D78325;
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  transition: background-color 0.3s ease;
 }
 
 
@@ -130,20 +130,19 @@ h4{
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 200px; /* Sesuaikan lebar tombol sesuai kebutuhan */
-  height: 45px; /* Sesuaikan tinggi tombol sesuai kebutuhan */
-  background-color: #d72525; /* Warna latar belakang */
-  color: #fff; /* Warna teks */
-  border: none; /* Hilangkan border */
-  border-radius: 10px; /* Sudut border-radius */
-  margin-bottom: 10px; /* Margin bawah */
-  text-align: center; /* Pusatkan teks secara horizontal */
+  width: 200px;
+  height: 45px;
+  background-color: #d72525;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
 .modal-footer {
   display: flex;
   justify-content: center;
-  margin-left: -14px; /* Adjust this value as needed */
 }
 
 .quantity {
@@ -188,11 +187,11 @@ h4{
   transition: transform 0.3s ease;
 }
 .gallery-item:hover .album {
-  transform: scale(1.1); /* Menggunakan skala 1.1 untuk memperbesar gambar */
+  transform: scale(1.1);
 }
 
 .gallery-item {
-  overflow: hidden; /* Memastikan gambar tidak keluar dari batas kotak gambar saat membesar */
+  overflow: hidden;
 }
 
   .about{

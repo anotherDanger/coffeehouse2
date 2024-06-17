@@ -12,7 +12,7 @@ class Signup extends Conn
     
         // Validasi input
         if (empty($username) || empty($password) || empty($password2)) {
-            return -1; // Input tidak lengkap
+            return -1;
         }
     
         parent::__construct();
@@ -22,7 +22,7 @@ class Signup extends Conn
         $query->execute([$username]);
 
         if ($query->rowCount() > 0) {
-            return -2; // Username sudah ada
+            return -2;
         }
         if($password !== $password2)
         {

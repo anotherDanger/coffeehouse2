@@ -18,8 +18,8 @@
     font-weight: bold;
   }
   .btn-login {
-      background-color: #ff6600; /* Ganti dengan warna yang diinginkan */
-      color: #ffffff; /* Opsional: Ganti dengan warna teks yang sesuai */
+      background-color: #ff6600;
+      color: #ffffff;
   }
   
   .btn-login:hover {
