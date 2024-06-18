@@ -23,5 +23,20 @@ if(isset($_POST['add_product']))
     
 }
 
+if(isset($_POST['update_product']))
+{
+    $products = new Product();
+    $product = $products->updtProduct($_POST);
+    if($product > 0)
+    {
+        echo "Berhasil";
+        header("Location: admin_product.php");
+    }else
+    {
+        echo "Gagal";
+        exit;
+    }
+}
+
 
 ?>

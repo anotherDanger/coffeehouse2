@@ -4,6 +4,8 @@ require_once "../koneksi/conn.php";
 
 class Product extends Conn
 {
+    public $gambar;
+
     public function getProduct($sql)
     {
         $conn = $this->conn;
@@ -27,7 +29,7 @@ class Product extends Conn
         $product_stock = $data["product_stock"];
         $product_desc = $data["product_desc"];
 
-        $image = $this->productUpload();
+        $image = $this->gambar;
 
         $sql = "INSERT INTO products VALUES(?, ?, ?, ?, ?, ?)";
         $query = $conn->prepare($sql);
@@ -37,14 +39,29 @@ class Product extends Conn
 
     }
 
+    public function updtProduct($data)
+    {
+        $conn = $this->conn;
+        $product_id = $data['update_p_id'];
+        $product_name = $data['update_p_name'];
+        $product_price = $data['update_p_price'];
+        $product_detail = $data['update_p_detail'];
+        $image = $this->productUpload();
+
+        $sql = "update products SET product_id = ?, product_name = ?, product_price = ?, product_desc = ?, product_image = ? WHERE product_id = '$product_id'";
+        $query = $conn->prepare($sql);
+        $query->execute([$product_id, $product_name, $product_price, $product_detail, $image]);
+        
+        return $query->rowCount();
+    }
+
     public function productUpload()
     {
-        $name = $_FILES['image']['name'];
+        $namaFile = $_FILES['image']['name'];
+        $ukuranFile = $_FILES['image']['size'];
         $error = $_FILES['image']['error'];
-        $size = $_FILES['image']['size'];
-        $tmpNmae = $_FILES['image']['tmp_name'];
+        $tmpName = $_FILES['image']['tmp_name'];
 
-        //validasi
         if($error === 4)
         {
             echo "<script>
@@ -53,7 +70,7 @@ class Product extends Conn
             return false;
         }
         $ekstensiValid = ['jpg','jpeg','png'];
-        $ekstensiFile = explode('.', $name);
+        $ekstensiFile = explode('.', $namaFile);
         $ekstensiFile = strtolower(end($ekstensiFile));
         
         if(!in_array($ekstensiFile, $ekstensiValid))
@@ -64,7 +81,7 @@ class Product extends Conn
             return false;
         }
 
-        if($size > 1000000)
+        if($ukuranFile > 1000000)
         {
             echo "<script>
                 alert('Ukuran terlalu besar');
@@ -76,7 +93,9 @@ class Product extends Conn
         $namaBaru .= '.';
         $namaBaru .= $ekstensiFile;
 
-        move_uploaded_file($tmpNmae, 'img/' . $namaBaru);
+        move_uploaded_file($tmpName, '../img-coffee/' . $namaBaru);
+
+        $this->gambar = $namaBaru;
         
         return $namaBaru;
     }

@@ -28,7 +28,7 @@ $product1 = $products->getProduct("SELECT * FROM products")[0];
 </head>
 <body>
   <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-transparent navbar-brown navbar-dark shadow-lg fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-transparent navbar-brown navbar-dark shadow-lg fixed-top">
         <div class="container">
           <a class="navbar-brand" href="" id="">Patri Coffee Shop</a>
           <button
@@ -43,10 +43,8 @@ $product1 = $products->getProduct("SELECT * FROM products")[0];
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse text-right" id="navbarText">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="logout.php">Keluar</a>
-              </li>
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="#home">Home</a>
               </li>
@@ -54,7 +52,7 @@ $product1 = $products->getProduct("SELECT * FROM products")[0];
                 <a class="nav-link active" aria-current="page" href="#menu">Menu</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="blogs.html">Blogs</a>
+                <a class="nav-link active" aria-current="page" href="../blogs/blogs.php">Blogs</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="#about">about</a>
@@ -62,6 +60,8 @@ $product1 = $products->getProduct("SELECT * FROM products")[0];
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="#kontak">Contact</a>
               </li>
+            </ul>
+              <ul class="navbar-nav">
               <li class="nav-item">
                 <button class="btn btn-profile" type="button" data-bs-toggle="modal" data-bs-target="#profil">
                     <i class="fa-solid fa-regular fa-user fa-xl fa-xl text-white"></i>
@@ -73,6 +73,8 @@ $product1 = $products->getProduct("SELECT * FROM products")[0];
                   <i class="fa-solid fa-cart-shopping fa-xl text-white"></i>
               </button>
             </li>
+          </ul>
+
             </ul>
           </div>
         </div>
@@ -100,8 +102,9 @@ $product1 = $products->getProduct("SELECT * FROM products")[0];
             <?php foreach($product as $row): ?>
     <!-- CARD 1 -->
     <div class="col-md-4">
+    
         <div class="card crop-img">
-            <img src="../img-coffee/<?php echo $row['product_image']; ?>" class="card-image card-img-top" />
+        <img src="../img-coffee/<?php echo $row['product_image']; ?>" class="card-image card-img-top">
             <h5 class="card-title"><?php echo $row['product_name']; ?></h5>
             <p class="card-text">Rp. <?php echo $row['product_price']; ?></p>
             <button class="btn btn-view-product mb-3" type="button" data-bs-toggle="modal" data-bs-target="#btnModal<?php echo $row['product_id']; ?>">Lihat Produk</button>
@@ -128,7 +131,7 @@ $product1 = $products->getProduct("SELECT * FROM products")[0];
                 <div class="modal-body">
                     <div class="row pt-4">
                         <div class="col-md-6">
-                            <img src="../img-coffee/<?php echo str_replace(' ', '', strtoupper($row['product_name'])); ?>.png" alt="<?php echo $row['product_name']; ?>" class="gmbr-popup">
+                            <img src="../img-coffee/<?php echo str_replace(' ', '', strtolower($row['product_name'])); ?>.png" alt="<?php echo $row['product_name']; ?>" class="gmbr-popup">
                         </div>
                         <div class="col-md-6">
                             <h3>BIJI KOPI <?php echo $row['product_name']; ?> - Patri Coffe House 800gr</h3>
@@ -164,8 +167,8 @@ $product1 = $products->getProduct("SELECT * FROM products")[0];
     </div>
 <?php endforeach; ?>
 
-  <!-- MODAL LOGIN -->
-  <div class="modal fade" id="profil" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+<!-- MODAL LOGIN -->
+<div class="modal fade" id="profil" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -180,29 +183,27 @@ $product1 = $products->getProduct("SELECT * FROM products")[0];
           <?php endif; ?>
           
           <?php if(isset($_SESSION['login'])): ?>
-            
-            <img src="img/<?php echo $gambar['user_image'];?>" alt="" class="foto">
+              
             <form action="../upload/upload.php" method="post" enctype="multipart/form-data">
               <div class="custom-file-upload-container">
-                <div class="custom-file-upload">
-                  <input type="file" name="foto" id="foto" />
-                    <label for="foto">Pilih Foto</label>
+                <div class="custom-file-upload-foto">
+                  <img src="img/<?php echo $gambar['user_image'];?>" alt="" class="foto">
+                    <?php foreach($rows as $row): ?>
+                      <p class="username-user">Halo! . <?php echo $row['username']; ?></p>
+                    <?php endforeach; ?>
+                  <div class="custom-file-upload">
+                    <input type="file" name="foto" id="foto" />
+                      <label for="foto">Pilih Foto</label>
+                    <button type="submit" name="upload">upload</button>
                 </div>
-                <button type="submit" name="upload">upload</button>
+                </div>
+              
               </div>
             </form>
-            <table>
-              <tr>
-                
-                <th>Username</th>
-              </tr>
               <?php foreach($rows as $row): ?>
-                <tr>
-                
-                  <td>Halo! . <?php echo $row['username']; ?></td>
-                </tr>
+                  <div  class="link-logout"> <a class="logout" aria-current="page" href="logout.php">Logout</a> </div>
               <?php endforeach; ?>
-            </table>
+
           <?php endif; ?>
           </form>
       </div>

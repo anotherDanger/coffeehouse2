@@ -127,35 +127,35 @@ if(!isset($_SESSION['admin']))
           
         <?php foreach($product as $row): ?>
                 <div class="box">
-                <img src="../img-coffee/<?php echo $row['product_image'] ?>" alt="<?php echo $row['product_image']; ?>">
+                <img src="../img-coffee/<?php echo $row['product_image']; ?>" alt="<?php echo $row['product_name']; ?>" class="gmbr-popup">
                   <h4><?php echo $row['product_name']; ?></h4>
                   <p><?php echo $row['product_price']; ?></p>
-                  <a href="admin_product.php" class="edit" data-bs-toggle="modal" data-bs-target="#edit-product" >Edit</a>
+                  <a href="#" class="edit" data-bs-toggle="modal" data-bs-target="#edit-product-<?php echo $row['product_id']; ?>">Edit</a>
                   <a href="admin_product.php" class="delete" onclick="return confirm('delete this')">Delete</a>
                 </div>
                 <?php endforeach; ?>
         </div>
               
-        <!-- Modal edit product-->
-        <div class="modal fade" id="edit-product" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-          
-              <section class="update-container">   
-
-                <form action="admin_product.html" method="post" enctype="multipart/form-data">
-                  <img src="img-admin/back3.jpg" alt="gambar coffe">
-                  <input type="hidden" name="update_p_id " value="">
-                  <input type="text" name="update_p_name " value="<?php echo $product1['product_name']; ?>">
-                  <input type="number" min="0" name="update_p_proce " value="">
-                  <textarea name="update_p_detail " value=""> </textarea>
-                  <input type="file" name="update_p_image " accept="image/png,image/jpg,image/jpeg,image/webp">
-                  <input type="submit" name="update_produvt " value="update" class="edit">
-                  <input type="reset"  value="cancel" class="edit" id="close-edit" data-bs-dismiss="modal">
-                </form>                
-              </section>
-            
-          </div>
+        <?php foreach($product as $row): ?>
+    <div class="modal fade" id="edit-product-<?php echo $row['product_id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <section class="update-container">   
+                    <form action="adminProductFunction.php" method="post" enctype="multipart/form-data">
+                        <img src="../img-coffee/<?php echo $row['product_image']; ?>" alt="<?php echo $row['product_name']; ?>">
+                        <input type="hidden" name="update_p_id" value="<?php echo $row['product_id']; ?>">
+                        <input type="text" name="update_p_name" value="<?php echo $row['product_name']; ?>">
+                        <input type="number" min="0" name="update_p_price" value="<?php echo $row['product_price']; ?>">
+                        <textarea name="update_p_detail"><?php echo $row['product_desc']; ?></textarea>
+                        <input type="file" name="image">
+                        <input type="submit" name="update_product" value="Update" class="edit">
+                        <input type="reset" value="Cancel" class="edit" data-bs-dismiss="modal">
+                    </form>
+                </section>
+            </div>
         </div>
+    </div>
+<?php endforeach; ?>
     <script>
       document.getElementById('profile-icon').addEventListener('click', function(event){
         event.preventDefault();

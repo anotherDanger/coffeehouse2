@@ -1,4 +1,3 @@
-
 .navbar-brown {
   background-color: #394034;
 }
@@ -151,7 +150,8 @@ h4{
   }
   
   .quantity-input{
-    width: 50px;
+    width: 50%;
+    height: 3rem;
     text-align: center;
   }
   
@@ -160,12 +160,11 @@ h4{
 {
     cursor: pointer;
     font-size: 20px;
-    width: 30px;
-    height: 30px;
     border-radius: 50%;
     background-color: #D78325;
     border: none;
-    margin: 5px;
+    margin: 0 1rex 0 1rex ;
+    width: 3rem;
   }
   .lingkaran {
     display: inline-block;
@@ -222,37 +221,41 @@ h4{
   color: white;
 }
 
-.foto
-{
-  border-radius: 100%; 
-  width: 40%; 
-}
 .custom-file-upload-container {
   display: flex;
   justify-content: center;
   align-items: center;
+  
 }
-
-.custom-file-upload {
-  display: inline-block;
-  position: relative;
-  overflow: hidden;
+.custom-file-upload-foto img {
+ border-radius: 100%;
+ width: 160px;
+ height: 160px;
+ margin: 1rem 1em 2rem 3rex;
 }
+.custom-file-upload-foto p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+ }
 
 .custom-file-upload input[type="file"] {
   display: none;
 }
 
-.custom-file-upload label {
+.custom-file-upload label, button {
   display: inline-block;
   background-color: #3498db;
   color: #fff;
   padding: 8px 20px;
   border-radius: 4px;
   cursor: pointer;
+  border: none;
 }
 
-.custom-file-upload label:hover {
+
+.custom-file-upload label:hover, button:hover {
   background-color: #2980b9;
 }
 .crop-img img {
@@ -264,4 +267,18 @@ h4{
 .gmbr-popup {
   max-width: 100%;
   height: auto;
+}
+.link-logout a{ 
+  color:red;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem;
+}
+
+.link-logout a:hover{
+  color: #800000;
 }
