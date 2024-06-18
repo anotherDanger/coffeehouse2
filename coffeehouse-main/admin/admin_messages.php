@@ -64,32 +64,11 @@
           <div class="box-container">
                 <!-- Yang di pakai -->
                 <div class="box">
-                  <p>user id : <span><?php echo $fetch_messages['id'];?></span></p>
-                  <p>user nama : <span><?php echo $fetch_messages['name'];?></span></p>
-                  <p>email : <span><?php echo $fetch_messages['email'];?></span></p>
-                  <a href="admin_messages.html?delete=<?php echo $fetch_users ['id'];?>" class="delete" onclick="return confirm('delete this')">Delete</a>
-                </div>
-                <!-- Nanti hapus -->
-                <div class="box">
-                  <p>user id : <span><?php echo $fetch_messages['id'];?></span></p>
-                  <p>user nama : <span><?php echo $fetch_messages['name'];?></span></p>
-                  <p>email : <span><?php echo $fetch_messages['email'];?></span></p>
-                  <a href="admin_messages.html?delete=<?php echo $fetch_users ['id'];?>" class="delete" onclick="return confirm('delete this')">Delete</a>
-                </div>
-                <!-- nnti hapus -->
-                <div class="box">
-                  <p>user id : <span><?php echo $fetch_messages['id'];?></span></p>
-                  <p>user nama : <span><?php echo $fetch_messages['name'];?></span></p>
-                  <p>email : <span><?php echo $fetch_messages['email'];?></span></p>
-                  <a href="admin_messages.html?delete=<?php echo $fetch_users ['id'];?>" class="delete" onclick="return confirm('delete this')">Delete</a>
-                </div>
-                  <!-- nanti hapus -->
-                <div class="box">
-                  <p>user id : <span><?php echo $fetch_messages['id'];?></span></p>
-                  <p>user nama : <span><?php echo $fetch_messages['name'];?></span></p>
-                  <p>email : <span><?php echo $fetch_messages['email'];?></span></p>
-                  <a href="admin_messages.html?delete=<?php echo $fetch_users ['id'];?>" class="delete" onclick="return confirm('delete this')">Delete</a>
-                </div>
+                  <p>user id :</p>
+                  <p>user nama :</span></p>
+                  <p>email :</span></p>
+                  <a href="admin_messages.html" class="delete" onclick="return confirm('delete this')">Delete</a>
+                
 
           </div>
         </section>

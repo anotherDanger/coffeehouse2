@@ -301,6 +301,8 @@ $product1 = $products->getProduct("SELECT * FROM products")[0];
       </div>
     </div>
     <!-- kontak -->
+     <?php if(isset($_SESSION['login'])): ?>
+      <form action="../message/message.php" method="post">
     <div class="container-fluid  kontak">
       <div class="container">
         <h2 class="display-3 text-center" id="kontak">Kontak Kami</h2>
@@ -312,30 +314,37 @@ $product1 = $products->getProduct("SELECT * FROM products")[0];
             <input
               class="form-control form-control-lg mb-3"
               type="text"
+              name="nama"
               placeholder="Nama"
             />
             <input
               class="form-control form-control-lg mb-3"
               type="text"
+              name="email"
               placeholder="Email"
             />
             <input
               class="form-control form-control-lg"
               type="text"
+              name="noHp"
               placeholder="No. Phone"
             />
           </div>
           <div class="col-md-6">
-            <textarea class="form-control form-control-lg" rows="5"></textarea>
+            <textarea class="form-control form-control-lg" rows="5" name="message"></textarea>
           </div>
         </div>
         <div class="col-md-3 mx-auto text-center pb-5 pb-5 " >
-          <button type="button" class="btn btn-kirim-pesan btn-lg text-white">
+          <button type="submit" name = "kirim" class="btn btn-kirim-pesan btn-lg text-white">
             Kirim Pesan
           </button>
         </div>
+        
       </div>
+      
     </div>
+    </form>
+      <?php endif; ?>
     <div class="text-center text-white footer">
       All Rights Reserved &copy; 2025
     </div>
