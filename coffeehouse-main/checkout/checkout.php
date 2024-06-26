@@ -43,16 +43,20 @@ if(isset($_POST['checkout'])) {
                 Buat Akun
             </div>
             <div class="card-body">
-                <form action="" method="post">
+                <form action="checkoutAction.php" method="post">
                     <input type="hidden" name="product_id" class="form-control" id="username" aria-describedby="emailHelp" value="<?php echo $product_id; ?>">
                     <input type="hidden" name="quantity" class="form-control" id="username" aria-describedby="emailHelp" value="<?php echo $quantity; ?>">
                     <div class="mb-3">
-                        <label for="username" class="form-label">Username</label>
-                        <input type="text" name="username" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Username">
+                        <label for="nama" class="form-label">Nama</label>
+                        <input type="text" name="nama" class="form-control" id="nama" aria-describedby="emailHelp" placeholder="nama">
                     </div>
                     <div class="mb-3">
-                        <label for="nama" class="form-label">Nama</label>
-                        <input type="text" name="nama" class="form-control" id="nama" aria-describedby="emailHelp" placeholder="Nama">
+                        <label for="no_hp" class="form-label">Phone</label>
+                        <input type="text" name="no_hp" class="form-control" id="no_hp" aria-describedby="emailHelp" placeholder="No HP">
+                    </div>
+                    <div class="mb-3">
+                        <label for="alamat" class="form-label">Alamat</label>
+                        <input type="text" name="alamat" class="form-control" id="alamat" aria-describedby="emailHelp" placeholder="Alamat">
                     </div>
                   <button type="submit" name="checkout" class="btn btn-login">Buat Pesanan</button>
                 </form>

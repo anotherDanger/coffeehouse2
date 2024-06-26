@@ -33,6 +33,39 @@ class Admin extends Conn
         return $rows;
     }
 
+    public function getTotalUser()
+    {
+        $conn = $this->conn;
+        $query = $conn->prepare("SELECT COUNT(*) FROM users");
+        $query->execute();
+
+        $result = $query->fetchColumn();
+
+        return $result;
+    }
+
+    public function getTotalProducts()
+    {
+        $conn = $this->conn;
+        $query = $conn->prepare("SELECT COUNT(*) FROM products");
+        $query->execute();
+
+        $result = $query->fetchColumn();
+
+        return $result;
+    }
+
+    public function getTotalOrders()
+    {
+        $conn = $this->conn;
+        $query = $conn->prepare("SELECT COUNT(*) FROM transactions");
+        $query->execute();
+
+        $result = $query->fetchColumn();
+
+        return $result;
+    }
+
 
     public function getQuantity($sql)
     {
@@ -49,6 +82,14 @@ class Admin extends Conn
         return $rows;
     }
 
+    public function updtProduct($sql)
+    {
+        $conn = $this->conn;
+        $query = $conn->prepare($sql);
+        $query->execute();
+
+        return $query->rowCount();
+    }
     
 }
 

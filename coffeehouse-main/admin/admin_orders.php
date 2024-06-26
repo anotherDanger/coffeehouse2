@@ -3,14 +3,19 @@ session_start();
 require_once "adminFunctions.php";
 
 $transc = new Admin();
-$orders = $transc->getQuantity("SELECT * FROM transactions");
 
-if(!isset($_SESSION['admin']))
-{
+if(!isset($_SESSION['admin'])) {
   header("Location: admin_login.php");
   exit;
 }
 
+if(isset($_POST['update'])) {
+  $id = $_POST['transaction_id'];
+  $status = $_POST['status'];
+  $update = $transc->updtProduct("UPDATE transactions SET status = '$status' WHERE transaction_id = '$id'");
+}
+
+$orders = $transc->getQuantity("SELECT * FROM transactions");
 ?>
 
 <!DOCTYPE html>
@@ -49,9 +54,6 @@ if(!isset($_SESSION['admin']))
             <a class="nav-link active text-white" aria-current="page" href="admin_messages.php">Messages</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active text-white" aria-current="page" href="admin_messages.php">Messages</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link active text-white" aria-current="page" href="admin_logout.php">Logout</a>
           </li>
         </ul>
@@ -64,40 +66,34 @@ if(!isset($_SESSION['admin']))
     </div>
   </nav>
 
-  <!-- logout -->
-    <div class="user-box" id="user-box">
-      <p>username : <span><?php echo $_SESSION ['admin_name'];?></span></p>
-      <p>email : <span><?php echo $_SESSION ['admin_email'];?></span></p>
-      
-      <form method="post" class="logout">
-        <button name="logout" class="logout-btn">LOG OUT</button>
-      </form>
-    </div>
     <!-- ------orders---------- -->
     <!-- Yang di pakai -->
     <?php foreach($orders as $row): ?>
       <form action="" method="post">
-        <input type="hidden" name="user_id" id="user_id" value="<?php echo $row['user_id'] ?>">
-    <section class="order-container">
-      <h1 class="title">Total Pesanan</h1>
-      <div class="box-container">
-        <div class="box">
-          <p>Transaction ID : <?php echo $row['transaction_id']; ?></p>
-          <p>User id : <?php echo $row['user_id'] ?></p>
-          <p>Product Name : <?php echo $row['product_name'] ?></p>
-          <p>Quantity : <?php echo $row['quantity'] ?></p>
-          <select name="status" id="">
-            <option disabled selected></option>
-            <option value="pending">Pending</option>
-            <option value="completed">Completed</option>
-        </select><br><br><br>
-        <button type="submit" name="update" class="edit">update</button>
-          <a href="admin_orders.html" class="delete" onclick="return confirm('delete this')">Delete</a>
-        </div> 
-      </section>
-    </form>
+        <input type="hidden" name="username" id="username" value="<?php echo $row['username']; ?>">
+        <input type="hidden" name="transaction_id" id="transaction_id" value="<?php echo $row['transaction_id']; ?>">
+        <section class="order-container">
+          <div class="box-container">
+            <div class="box">
+              <p>Transaction ID : <?php echo $row['transaction_id']; ?></p>
+              <p>Username : <?php echo $row['username']; ?></p>
+              <p>Product Name : <?php echo $row['product_name']; ?></p>
+              <p>Quantity : <?php echo $row['quantity']; ?></p>
+              <p>Status : <?php echo $row['status']; ?></p>
+              <select name="status" id="">
+                <option disabled selected></option>
+                <option value="pending">Pending</option>
+                <option value="completed">Completed</option>
+              </select><br><br><br>
+              <button type="submit" name="update" class="edit" value="completed">Update</button>
+              <a href="admin_orders.html" class="delete" onclick="return confirm('delete this')">Delete</a>
+            </div> 
+          </div>
+        </section>
+      </form>
     <?php endforeach; ?>
-     <script>
+
+    <script>
       document.getElementById('profile-icon').addEventListener('click', function(event){
         event.preventDefault();
         var userBox = document.getElementById('user-box')

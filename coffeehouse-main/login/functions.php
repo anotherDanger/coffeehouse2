@@ -32,6 +32,18 @@ class LoginUser extends Conn implements LoginInterface {
             }
         }
     }
+
+    public function validateLoginByCookie() {
+        if (isset($_COOKIE['remember_me'])) {
+            $cookie_value = $_COOKIE['remember_me'];
+    
+            // Cek apakah nilai cookie sesuai dengan hash dari username yang disimpan
+            if (password_verify($table , $cookie_value)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
 
 

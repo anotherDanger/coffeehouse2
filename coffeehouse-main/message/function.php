@@ -32,7 +32,7 @@ class Messages extends Conn{
         $user_id = $getUser[0]['user_id']; // Ambil kolom user_id dari hasil query
 
         // Persiapan dan eksekusi query untuk menyimpan pesan
-        $sql = "INSERT INTO messages VALUES (1, ?, ?, ?, NOW())";
+        $sql = "INSERT INTO messages VALUES (NULL, ?, ?, ?, NOW())";
         $query = $conn->prepare($sql);
         $query->execute([$user_id, $nama, $message]);
 

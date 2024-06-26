@@ -2,7 +2,6 @@
 session_start();
 require_once "adminFunctions.php";
 $admins = new Admin();
-$admin = $admins->getAdmin();
 
 if(!isset($_SESSION['admin']))
 {
@@ -72,25 +71,25 @@ if(!isset($_SESSION['admin']))
     <!-- dashboard -->
     <section class="dashboard-container">
     <h2>DASHBOARD</h2>
-    <div class="box-container">
+    <pph class="box-container">
     <div class="box">
-      <h3>ANGKA</h3>
+      <h3><?php echo $admins->getTotalOrders(); ?></h3>
       <p>TOTAL PESANAN</p>
     </div>
 
     <div class="box">
-      <h3>ANGKA</h3>
+      <h3><?php echo $admins->getTotalProducts();?></h3>
       <p>PRODUCT DI TAMBAHKAN</p>
     </div>
 
 
     <div class="box">
-      <h3><?php echo $admin;?></h3>
+      <h3><?php echo $admins->getAdmin();?></h3>
       <p>TOTAL ADMIN</p>
     </div>
 
-    <div class="box">
-      <h3>ANGKA</h3>
+      <div class="box">
+      <h3><?php echo $admins->getTotalUser(); ?></h3>
       <p>TOTAL USER</p>
     </div>
   </div>

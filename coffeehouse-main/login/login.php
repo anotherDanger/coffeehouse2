@@ -34,6 +34,10 @@ session_start();
                             <label for="password" class="form-label">Password</label>
                             <input type="password" name ="password" class="form-control" id="password" placeholder="Password">
                         </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="remember" name="remember">
+                            <label class="form-check-label" for="remember">Ingat Saya</label>
+                         </div>
                         <button type="submit" name="login" class="btn btn-login">Masuk</button>
                     </form>
                 </div>

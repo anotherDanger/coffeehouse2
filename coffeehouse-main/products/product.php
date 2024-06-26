@@ -100,6 +100,16 @@ class Product extends Conn
         return $namaBaru;
     }
 
+    public function deleteProduct($id)
+    {
+        $conn = $this->conn;
+        $sql = "DELETE FROM products WHERE product_id = ?";
+        $query = $conn->prepare($sql);
+        $query->execute([$id]);
+
+        return $query->rowCount();
+    }
+
 }
 
 

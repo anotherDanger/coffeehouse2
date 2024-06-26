@@ -7,6 +7,7 @@ abstract class Conn
     private $dbName = "coffeehouse";
     private $username = "root";
     private $password = "andhikad";
+
     public $conn;
 
     //konstruktor

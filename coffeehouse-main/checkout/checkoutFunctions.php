@@ -40,18 +40,20 @@ class Checkout extends Conn
         $conn = $this->conn;
         $quantity = $data['quantity'];
         $username = $_SESSION['login'];
-
+        $nama = $data['nama'];
+        $noHP = $data['no_hp'];
+        $alamat = $data['alamat'];
         // Ambil informasi produk berdasarkan ID
         $product_id = $data['product_id'];
-        $products = $this->getProduct($product_id);
-        $product_name = $products[0]['product_name'];
+        $products = $this->getProduct($product_id)[0];
+        $product_name = $products['product_name'];
 
 
-        $users = $this->getUser();
-        $user_id = $users[0]['user_id'];
+        $users = $this->getUser()[0];
+        $user_id = $users['user_id'];
 
 
-        $price = $products[0]['product_price'];
+        $price = $products['product_price'];
         $total = $quantity * $price;
 
         $conn->beginTransaction();
@@ -62,17 +64,17 @@ class Checkout extends Conn
             
 
             
-            $query = $conn->prepare("INSERT INTO transactions (transaction_id, user_id, username, product_id, product_name, quantity, price, total, created_at, status)
-                                    VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, NOW(), 'pending')");
-            $query->execute([$user_id, $username, $product_id, $product_name, $quantity, $price, $total]);
+            $query = $conn->prepare("INSERT INTO transactions (transaction_id, username, product_id, product_name, quantity, price, total, created_at, status)
+                                    VALUES (NULL, ?, ?, ?, ?, ?, ?, NOW(), 'pending')");
+            $query->execute([$username, $product_id, $product_name, $quantity, $price, $total]);
 
 
 
             
-            $query_detail = $conn->prepare("INSERT INTO transactions_detail (transaction_id, product_id, product_name, quantity, price, subtotal)
-                                           VALUES (?, ?, ?, ?, ?, ?)");
+            $query_detail = $conn->prepare("INSERT INTO transaction_detail (transaction_id, user_id, username, name, phone, product_name, address, order_date, total)
+                                           VALUES (?, ?, ?, ?, ?, ?, ?,NOW(), ?)");
             $subtotal = $quantity * $price;
-            $query_detail->execute([$transaction_id, $product_id, $product_name, $quantity, $price, $subtotal]);
+            $query_detail->execute([$transaction_id, $user_id, $username, $nama, $noHP, $product_name, $alamat, $subtotal]);
 
 
             $conn->commit();

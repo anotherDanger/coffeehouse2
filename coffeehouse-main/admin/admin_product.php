@@ -131,7 +131,7 @@ if(!isset($_SESSION['admin']))
                   <h4><?php echo $row['product_name']; ?></h4>
                   <p><?php echo $row['product_price']; ?></p>
                   <a href="#" class="edit" data-bs-toggle="modal" data-bs-target="#edit-product-<?php echo $row['product_id']; ?>">Edit</a>
-                  <a href="admin_product.php" class="delete" onclick="return confirm('delete this')">Delete</a>
+                  <a href="admin_product_delete.php?product_id=<?php echo $row['product_id']; ?>" class="delete" onclick="return confirm('delete this')">Delete</a>
                 </div>
                 <?php endforeach; ?>
         </div>

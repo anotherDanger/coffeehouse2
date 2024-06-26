@@ -282,3 +282,13 @@ h4{
 .link-logout a:hover{
   color: #800000;
 }
+
+.history-icon {
+  margin-left: 10px; /* Adjust as needed */
+  margin-right: 10px; /* Adjust as needed */
+}
+.offcanvas-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
