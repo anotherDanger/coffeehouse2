@@ -7,6 +7,8 @@ require_once "../loginTrait/loginTrait.php";
 class LoginUser extends Conn implements LoginInterface {
     use TableAccessTrait;
 
+    public $username;
+
     public function getLogin($data) {
         $username = $data["username"];
         $password = $data["password"];
@@ -21,6 +23,12 @@ class LoginUser extends Conn implements LoginInterface {
             if ($row) {
                 if (password_verify($password, $row["password"])) {
                     $_SESSION['login'] = $_POST['username'];
+                    if (isset($_POST['remember'])) {
+                        $id = hash('sha256', $_POST['username']);
+                        $user = $_POST['username'];
+                        setcookie('user', $user, time() + 3600, '/');
+                        setcookie('id', $id, time() + 3600, '/');
+                    }
                     return true;
                 } else {
                     return false;
@@ -31,18 +39,6 @@ class LoginUser extends Conn implements LoginInterface {
                 exit;
             }
         }
-    }
-
-    public function validateLoginByCookie() {
-        if (isset($_COOKIE['remember_me'])) {
-            $cookie_value = $_COOKIE['remember_me'];
-    
-            // Cek apakah nilai cookie sesuai dengan hash dari username yang disimpan
-            if (password_verify($table , $cookie_value)) {
-                return true;
-            }
-        }
-        return false;
     }
 }
 

@@ -23,6 +23,7 @@ if (!empty($cartItems)) {
     echo '<div>';
     echo '<img src="../img-coffee/' . htmlspecialchars($item['product_image']) . '" alt="' . htmlspecialchars($item['product_name']) . '" style="width: 50px; height: 50px;">';
     echo '<button class="btn btn-danger btn-sm ms-2 delete-item-btn" data-product-id="' . htmlspecialchars($item['product_id']) . '">Hapus</button>';
+    echo '<button class="btn btn-success btn-sm ms-2 checkout-item-btn" data-product-id="' . htmlspecialchars($item['product_id']) . '">Checkout</button>';
     echo '</div>';
     echo '</li>';
   }
@@ -32,7 +33,7 @@ if (!empty($cartItems)) {
   echo '</div>';
   echo '<div class="cart-actions mt-3">';
   echo '<button class="btn btn-danger" id="clearCartBtn">Kosongkan Keranjang</button> ';
-  echo '<button class="btn btn-success" id="checkoutBtn">Checkout</button>';
+  // Tombol "Checkout" di sini tidak diperlukan, karena akan muncul di setiap produk.
   echo '</div>';
 } else {
   echo '<p>Keranjang kamu kosong!</p>';

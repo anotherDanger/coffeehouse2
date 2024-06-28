@@ -1,17 +1,33 @@
 <?php
-session_start();
+
 require_once "../profil/function.php";
 require_once "../products/product.php";
+require_once "../login/loginfunctions.php";
+// Set session from cookie if session is not set but cookie is present
+if (isset($_COOKIE['user_id_cookie']) && isset($_COOKIE['id'])) {
+  $key = $_COOKIE['id'];
+  $user = $_COOKIE['user'];
+  $rows = new Profil();
+  $row = $rows->getProfil("SELECT * FROM users WHERE username = '$user'")[0];
+  $id = $row['username'];
+  if($key === hash('sha256', $id))
+  {
+    $_SESSION['login'] = $user;
+  }
+}
 
 if (isset($_SESSION['login'])) {
   $profil = new Profil();
-  $rows = $profil->getProfil("SELECT * FROM users WHERE username = ?");
-  $gambar = $profil->getProfil("SELECT * FROM users WHERE username = ?")[0];
+  $username = $_SESSION['login'];
+  $rows = $profil->getProfil("SELECT * FROM users WHERE username = '$username'");
+  $gambar = $profil->getProfil("SELECT * FROM users WHERE username = '$username'")[0];
 }
 
 $products = new Product();
 $product = $products->getProduct("SELECT * FROM products");
 $product1 = $products->getProduct("SELECT * FROM products")[0];
+
+
 
 ?>
 
@@ -352,13 +368,14 @@ $product1 = $products->getProduct("SELECT * FROM products")[0];
   <div class="offcanvas offcanvas-end" tabindex="-1" id="offCanfasCart" aria-labelledby="offCanfasCartLabel">
     <div class="offcanvas-header">
         <h5 id="offcanvasRightLabel" class="mb-0">Keranjang Belanja</h5>
-        <a href="#" class="history-icon text-decoration-none">
+        <a href="../checkout/history.php" class="history-icon text-decoration-none">
             <i class="fas fa-history"></i>
         </a>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body" id="cartBody">
         Loading...
+        
     </div>
 </div>
 
@@ -443,6 +460,13 @@ $product1 = $products->getProduct("SELECT * FROM products")[0];
         }
       });
     });
+    $(document).on('click', '.checkout-item-btn', function() {
+    const productId = $(this).data('product-id');
+    const quantity = $('#quantity_' + productId).val(); // Ambil kuantitas produk dari input
+
+    // Lakukan redirect ke halaman checkout dengan menyertakan product_id dan quantity
+    window.location.href = '../checkout/checkout.php?product_id=' + productId + '&quantity=' + quantity;
+  });
   });
   </script>
 </body>

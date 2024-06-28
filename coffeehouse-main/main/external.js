@@ -37,4 +37,5 @@ document.addEventListener("DOMContentLoaded", function() {
         var checkoutLink = document.getElementById('checkoutLink_' + productId);
         checkoutLink.href = '../checkout/checkout.php?product_id=' + productId + '&quantity=' + encodeURIComponent(quantity);
     }
+    
 });

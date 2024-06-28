@@ -6,11 +6,21 @@ require_once "../koneksi/conn.php";
 class Profil extends Conn
 {
 
-    function getProfil($sql) : array
+    public function getId($sql)
     {
         $conn = $this->conn;
         $sql = $conn->prepare($sql);
-        $sql->execute([$_SESSION['login']]);
+        $sql->execute();
+        $row = $sql->fetch(PDO::FETCH_ASSOC);
+
+        return $row;
+    }
+
+    function getProfil($sql)
+    {
+        $conn = $this->conn;
+        $sql = $conn->prepare($sql);
+        $sql->execute();
         $rows = [];
         while($row = $sql->fetch(PDO::FETCH_ASSOC))
         {
