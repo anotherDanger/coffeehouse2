@@ -2,6 +2,16 @@
 session_start();
 
 require_once "historyFunction.php";
+
+// Cek apakah ada pesan yang disimpan dalam session
+if (isset($_SESSION['message'])) {
+    // Tampilkan pesan dalam alert JavaScript
+    echo '<script>alert("' . $_SESSION['message'] . '");</script>';
+
+    // Hapus pesan dari session setelah ditampilkan
+    unset($_SESSION['message']);
+}
+
 $username = $_SESSION['login'];
 $getHistory = new History();
 $history = $getHistory->getHistory($username);
@@ -68,7 +78,6 @@ $history = $getHistory->getHistory($username);
                 <div class="transaction-item">
                     <h5>Transaction ID: <?php echo $row['transaction_id']; ?></h5>
                     <ul class="transaction-list">
-                        <li><strong>Username:</strong> <?php echo $row['username']; ?></li>
                         <li><strong>Product name:</strong> <?php echo $row['product_name']; ?></li>
                         <li><strong>Quantity:</strong> <?php echo $row['quantity']; ?></li>
                         <li><strong>Name:</strong> <?php echo $row['name']; ?></li>
@@ -79,6 +88,8 @@ $history = $getHistory->getHistory($username);
                         <li><strong>Status:</strong> <?php echo $row['status']; ?></li>
                     </ul>
                     <a href="historyPDF.php?id=<?php echo $row['transaction_id']; ?>">Cetak</a>
+                    <br>
+                    <a href="../phpMailer/email.php?id=<?php echo $row['transaction_id']; ?>">Kirim Email</a>
                     <img src="../img-coffee/<?php echo $row['product_image']; ?>" class="transaction-image" alt="">
                 </div>
             <?php endforeach; ?>

@@ -4,7 +4,8 @@ require_once "../koneksi/conn.php";
 
 class Product extends Conn
 {
-    public $gambar;
+    private $gambar;
+    public $products;
 
     public function getProduct($sql)
     {
@@ -17,6 +18,7 @@ class Product extends Conn
             $rows[] = $row;
         }
 
+        $this->products = $rows;
         return $rows;
     }
 

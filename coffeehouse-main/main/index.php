@@ -26,7 +26,7 @@ if (isset($_SESSION['login'])) {
 $products = new Product();
 $product = $products->getProduct("SELECT * FROM products");
 $product1 = $products->getProduct("SELECT * FROM products")[0];
-
+$items = $products->products;
 
 
 ?>
@@ -464,7 +464,6 @@ $product1 = $products->getProduct("SELECT * FROM products")[0];
     const productId = $(this).data('product-id');
     const quantity = $('#quantity_' + productId).val(); // Ambil kuantitas produk dari input
 
-    // Lakukan redirect ke halaman checkout dengan menyertakan product_id dan quantity
     window.location.href = '../checkout/checkout.php?product_id=' + productId + '&quantity=' + quantity;
   });
   });

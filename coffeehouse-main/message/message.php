@@ -13,4 +13,15 @@ if(isset($_POST['kirim']))
     }
 }
 
+if($_SERVER['REQUEST_METHOD'] === 'GET')
+{
+    $id = $_GET['id'];
+    $message = new Messages();
+    $deleteMessage = $message->messageDelete($id);
+    if($deleteMessage > 0)
+    {
+        header("Location: ../admin/admin_messages.php");
+    }
+}
+
 ?>

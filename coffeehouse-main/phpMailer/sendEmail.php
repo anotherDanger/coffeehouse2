@@ -1,14 +1,23 @@
 <?php
 session_start();
-
 require_once '../../vendor/autoload.php';
-require_once "historyFunction.php";
-$id = $_GET['id'];
+
+require_once "../checkout/historyFunction.php";
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+
+$id = $_POST['id'];
 $username = $_SESSION['login'];
+
+
 $history = new History();
 $data = $history->historyPrint($id)[0];
 
+
 $mpdf = new \Mpdf\Mpdf();
+
 
 $html = '
 <!DOCTYPE html>
@@ -68,9 +77,7 @@ $html = '
                     <th>Total</th>
                 </tr>
             </thead>
-            <tbody>';
-
-$html .= '
+            <tbody>
                 <tr>
                     <td>' . htmlspecialchars($data['transaction_id']) . '</td>
                     <td>' . htmlspecialchars($data['name']) . '</td>
@@ -80,9 +87,7 @@ $html .= '
                     <td>' . htmlspecialchars($data['address']) . '</td>
                     <td>' . htmlspecialchars($data['order_date']) . '</td>
                     <td>' . htmlspecialchars($data['total']) . '</td>
-                </tr>';
-
-$html .= '
+                </tr>
             </tbody>
         </table>
         <div class="invoice-total">
@@ -92,7 +97,49 @@ $html .= '
 </body>
 </html>';
 
+
 $mpdf->WriteHTML($html);
 
-$mpdf->Output('laporan_faktur.pdf', 'D');
+
+$pdfContent = $mpdf->Output('', 'S');
+
+
+$mail = new PHPMailer(true);
+
+try {
+    // Server settings
+    $mail->isSMTP();
+    $mail->Host       = 'smtp.gmail.com';
+    $mail->SMTPAuth   = true;
+    $mail->Username   = 'andhikadanger1@gmail.com';
+    $mail->Password   = 'bpdaaazryyzsxuhg';
+    $mail->SMTPSecure = 'ssl';
+    $mail->Port       = 465;
+
+    // Penerima
+    $mail->setFrom('andhikadanger1@gmail.com', 'Patri Coffeehouse');
+    $mail->addAddress($_POST['email'], 'User');
+
+    // Lampiran PDF
+    $mail->addStringAttachment($pdfContent, 'laporan_faktur.pdf', 'base64', 'application/pdf');
+
+
+    $mail->isHTML(true);
+    $mail->Subject = 'Patri Coffeehouse';
+    $mail->Body    = 'Berikut faktur transaksi anda.';
+    $mail->AltBody = 'Berikut faktur transaksi anda.';
+
+
+    $mail->send();
+    $_SESSION['message'] = 'Email berhasil dikirim';
+    header("Location: ../checkout/history.php");
+    exit;
+} catch (Exception $e) {
+
+    $_SESSION['message'] = "Email tidak dapat dikirim/tidak ditemukan";
+
+
+    header('Location: ../checkout/history.php');
+    exit();
+}
 ?>

@@ -35,8 +35,6 @@ class LoginUser extends Conn implements LoginInterface {
                 }
             } else {
                 $this->conn = null;
-                echo "Username tidak ditemukan!";
-                exit;
             }
         }
     }

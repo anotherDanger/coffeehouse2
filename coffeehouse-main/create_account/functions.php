@@ -14,8 +14,6 @@ class Signup extends Conn
         if (empty($username) || empty($password) || empty($password2)) {
             return -1;
         }
-    
-        parent::__construct();
 
         $conn = $this->conn;
         $query = $conn->prepare("SELECT * FROM users WHERE username = ?");

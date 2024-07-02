@@ -17,7 +17,7 @@ class Messages extends Conn{
     }
 
     public function sendMessage($data)
-{
+    {
     $conn = $this->conn;
     $nama = $data['nama'];
     $message = $data['message'];
@@ -25,8 +25,7 @@ class Messages extends Conn{
 
     // Mengambil informasi profil pengguna
     $profil = new Profil();
-    $getUser = $profil->getProfil("SELECT * FROM users WHERE username = ?", [$username]);
-    
+    $getUser = $profil->getProfil("SELECT * FROM users WHERE username = '$username'");
     // Pastikan mengambil satu baris dengan FETCH_ASSOC atau FETCH_OBJ
     if (!empty($getUser)) {
         $user_id = $getUser[0]['user_id']; // Ambil kolom user_id dari hasil query
@@ -42,6 +41,26 @@ class Messages extends Conn{
         return false;
     }
 }
+public function getMessage($sql)
+{
+    $conn = $this->conn;
+    $query = $conn->prepare($sql);
+    $query->execute();
+    $rows = [];
+    while($row = $query->fetch(PDO::FETCH_ASSOC))
+    {
+        $rows[] = $row;
+    }
+    return $rows;
+}
+public function messageDelete($id)
+{
+    $conn = $this->conn;
+    $query = $conn->prepare("DELETE FROM messages WHERE message_id = ?");
+    $query->execute([$id]);
+    return $query->rowCount();
+}
+
 }
 
 

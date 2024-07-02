@@ -1,3 +1,10 @@
+<?php 
+require_once "../message/function.php";
+$getMessage = new Messages();
+$messages = $getMessage->getMessage("SELECT * FROM messages");
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,20 +64,22 @@
     </div>
 
     <!-- Messages -->
-    <section class="messages-container"> 
+    
+      <section class="messages-container"> 
       <div>
           <h1 class="title">User Messages</h1>
       </div>
+      <?php foreach($messages as $message): ?>
           <div class="box-container">
                 <!-- Yang di pakai -->
                 <div class="box">
-                  <p>user id :</p>
-                  <p>user nama :</span></p>
-                  <p>email :</span></p>
-                  <a href="admin_messages.html" class="delete" onclick="return confirm('delete this')">Delete</a>
-                
-
+                  <p>user id : <?php echo $message['user_id']; ?></p>
+                  <p>username : <?php echo $message['username']; ?></p>
+                  <p>message : <?php echo $message['message']; ?></p>
+                  <a href="../message/message.php?id=<?php echo $message['message_id']; ?>" class="delete" onclick="return confirm('delete this')">Delete</a>
+                </div>
           </div>
+      <?php endforeach; ?>
         </section>
         
     <script>
